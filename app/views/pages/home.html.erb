@@ -1,6 +1,6 @@
 <%= simple_form_for @listing do |f| %>
-  <%= f.input :address %>
-  <%= f.input :street_name %>
-  <%= f.input :zip_code %>
+  <%= f.input :address, label: 'Numerical Address', placeholder: '626' %>
+  <%= f.input :street_name, label: 'Street Name', placeholder: 'Madrid Street'  %>
+  <%= f.input :zip_code, label: 'Zip Code', placeholder: '94112'  %>
   <%= f.button :submit %>
 <% end %>
