@@ -1,3 +1,4 @@
 Projectx::Application.routes.draw do
-  root to: 'pages#home'
+  root to: 'listings#index'
+  resources :listings, only: [:index, :create, :show, :destroy]
 end
