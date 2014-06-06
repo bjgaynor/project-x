@@ -122,6 +122,8 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.0)
+    rubillow (0.0.7)
+      nokogiri (~> 1.5)
     rubyzip (1.1.4)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -189,6 +191,7 @@ DEPENDENCIES
   pry
   rails (= 4.0.0)
   rspec-rails
+  rubillow
   sass-rails (~> 4.0.0)
   sdoc
   selenium-webdriver
