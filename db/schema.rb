@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606032621) do
+ActiveRecord::Schema.define(version: 20140608103544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "listings", force: true do |t|
     t.string   "address"
-    t.string   "street_name"
-    t.string   "zip_code"
     t.string   "zestimate"
-    t.string   "rent_estimate"
     t.string   "forecast_percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "zpid"
+    t.string   "city_state_zip"
+    t.text     "rent_zestimate"
   end
 
 end
