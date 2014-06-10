@@ -5,11 +5,18 @@ class ListingsController < ApplicationController
   end
 
   def create
-    # @listing = Listing.create(address: params[:address], street_name: params[:street_name], zip_code: params[:zip_code])
+    begin
     @listing = Listing.create(listing_params)
-    @data = Rubillow::HomeValuation.search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
-    @listing.update_attributes(zpid: @data.zpid, rent_zestimate: @data.rent_zestimate)
+    @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
+    @listing.update_attributes(zpid: @search_data.zpid, rent_zestimate: @search_data.rent_zestimate)
+    @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
+    @listing.update_attributes(zestimate: @zestimate_data.price) #, forecast_percentage: @zestimate_data.percentile)
+    rescue => e
+      render :error
+      return
+    else
     render :create
+    end
   end
 
   private
