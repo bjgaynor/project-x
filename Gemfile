@@ -16,6 +16,8 @@ ruby '2.0.0'
   gem 'thin'
   gem 'simple_form'
   gem 'rubillow'
+  gem 'active_importer'
+  gem 'mechanize'
 
 group :development, :test do
   gem 'rspec-rails'

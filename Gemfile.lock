@@ -10,6 +10,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_importer (0.2.5)
+      roo
     activemodel (4.0.0)
       activesupport (= 4.0.0)
       builder (~> 3.1.0)
@@ -106,6 +108,10 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    roo (1.13.2)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
     rspec-core (3.0.0)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.0)
@@ -124,6 +130,7 @@ GEM
     rspec-support (3.0.0)
     rubillow (0.0.7)
       nokogiri (~> 1.5)
+    ruby-ole (1.2.11.7)
     rubyzip (1.1.4)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -145,6 +152,8 @@ GEM
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     slop (3.5.0)
+    spreadsheet (0.9.7)
+      ruby-ole (>= 1.0)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -178,6 +187,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_importer
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
