@@ -1,8 +1,12 @@
 # Zillow Web Services Identification (ZWSID) is: X1-ZWz1duc7atmdxn_4ok8b
 
+# Rubillow Docs
+
+http://rubydoc.info/gems/rubillow/0.0.8/frames
+
 # Example Zillow Search Results Data Structure
 
- @message="Request successfully processed", @code=0, @near_limit=false, @zpid="11489349", @links={:homedetails=>"http://www.zillow.com/homedetails/416-10th-St-Oakmont-PA-15139/11489349_zpid/", :graphsanddata=>"http://www.zillow.com/homedetails/416-10th-St-Oakmont-PA-15139/11489349_zpid/#charts-and-data", :mapthishome=>"http://www.zillow.com/homes/11489349_zpid/", :comparables=>"http://www.zillow.com/homes/comps/11489349_zpid/"}, @address={:street=>"416 10th St", :city=>"Oakmont", :state=>"PA", :zipcode=>"15139", :latitude=>"40.516053", :longitude=>"-79.832232"}, @price="275549", @last_updated=Thu, 05 Jun 2014, @valuation_range={:low=>"253505", :high=>"294837"}, @change="11332", @rent_zestimate={:price=>"1937", :last_updated=>"06/02/2014", :value_change=>"28", :value_duration=>"30", :valuation_range=>{:low=>"1240", :high=>"2634"}, :percentile=>""}, @change_duration="30", @percentile="0", @region="Oakmont", @region_id="19729", @region_type="city", @local_real_estate={:overview=>"http://www.zillow.com/local-info/PA-Oakmont/r_19729/", :for_sale_by_owner=>"http://www.zillow.com/oakmont-pa/fsbo/", :for_sale=>"http://www.zillow.com/oakmont-pa/"}>
+ @message="Request successfully processed", @code=0, @near_limit=false, @zpid="11489349", @links={:homedetails=>"http://www.zillow.com/homedetails/416-10th-St-Oakmont-PA-15139/11489349_zpid/", :graphsanddata=>"http://www.zillow.com/homedetails/416-10th-St-Oakmont-PA-15139/11489349_zpid/#charts-and-data", :mapthishome=>"http://www.zillow.com/homes/11489349_zpid/", :comparables=>"http://www.zillow.com/homes/comps/11489349_zpid/"}, @address={:street=>"416 10th St", :city=>"Oakmont", :state=>"PA", :zipcode=>"15139", :latitude=>"40.516053", :longitude=>"-79.832232"}, @price="275549", @last_updated=Thu, 05 Jun 2014, @valuation_range={:low=>"253505", :high=>"294837"}, @change="11332", @rent_zestimate={:price=>"1937", :last_updated=>"06/02/2014", _change=>"28", :value_duration=>"30", :valuation_range=>{:low=>"1240", :high=>"2634"}, :percentile=>""}, @change_duration="30", @percentile="0", @region="Oakmont", @region_id="19729", @region_type="city", @local_real_estate={:overview=>"http://www.zillow.com/local-info/PA-Oakmont/r_19729/", :for_sale_by_owner=>"http://www.zillow.com/oakmont-pa/fsbo/", :for_sale=>"http://www.zillow.com/oakmont-pa/"}>
 
 
 

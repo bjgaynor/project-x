@@ -8,8 +8,10 @@ class ListingsController < ApplicationController
     begin
     @listing = Listing.create(listing_params)
     @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
-    @listing.update_attributes(zpid: @search_data.zpid, rent_zestimate: @search_data.rent_zestimate)
+    puts @search_data.inspect
+    @listing.update_attributes(zpid: @search_data.zpid, rent_zestimate: @search_data.rent_zestimate, homedetail_links: @search_data.links)
     @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
+    puts @zestimate_data.inspect
     @listing.update_attributes(zestimate: @zestimate_data.price) #, forecast_percentage: @zestimate_data.percentile)
     rescue => e
       render :error
