@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613091022) do
+ActiveRecord::Schema.define(version: 20140615070835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "imports", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "spreadsheet_file_name"
+    t.string   "spreadsheet_content_type"
+    t.integer  "spreadsheet_file_size"
+    t.datetime "spreadsheet_updated_at"
+  end
 
   create_table "listings", force: true do |t|
     t.string   "address"

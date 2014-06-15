@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  # include ApplicationHelper
 
   def index
     @listing = Listing.new
@@ -17,6 +18,16 @@ class ListingsController < ApplicationController
     else
     render :create
     end
+  end
+
+  def upload
+    # ListingImporter.new(params[:listing][:excel_file].path, :extension => :xls)
+    # ListingImporter.new
+    #('/Users/apprentice/Downloads/sheet.xls') #, :extension => :xls)
+
+    #(params["listing"]["excel_file"].path, :extension => :xlsx)
+    # importer.import(spreadsheet_path, :extension => :xlsx)
+    # render :upload
   end
 
   private
