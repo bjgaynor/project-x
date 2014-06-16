@@ -1,4 +1,7 @@
 <%= simple_form_for @listing do |f| %>
+  Create A Listing In Our Database:
+  <br>
+  <br>
   <%= f.input :address, label: 'Address', placeholder: '626 Madrid Street' %>
   <%= f.input :city_state_zip, label: 'City, State, Zip Code', placeholder: 'San Francisco, CA, 94112', hint: "--Zip code is optional--"  %>
   <%= f.button :submit %>
@@ -6,10 +9,12 @@
 
   <br>
   <br>
-  <br>
 
  <%= simple_form_for :import, :url=>{:controller=> "imports", :action=> "create"}, :html => { :multipart => true } do |f| %>
-    Choose an Excel File To Upload:
+    Choose An Excel File To Upload:
+      <br>
+      <br>
     <%= f.file_field :spreadsheet %>
+      <br>
     <%= submit_tag 'Submit' %>
 <% end %>
