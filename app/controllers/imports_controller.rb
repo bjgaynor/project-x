@@ -5,9 +5,16 @@ class ImportsController < ApplicationController
   end
 
   def create
+    begin
     @import = Import.create(import_params)
-    puts @import.spreadsheet.path
+    @@spreadsheet = Roo::Excel.new("#{@import.spreadsheet.path}")
+    # @@spreadsheet = Roo::Excelx.new("#{@import.spreadsheet.path}") #BUGFIX
+    rescue => e
+      render :error
+      return
+    else
     render :create
+    end
   end
 
   def upload

@@ -18,7 +18,6 @@ ruby '2.0.0'
   gem 'rubillow'
   gem 'mechanize'
   gem 'paperclip'
-  # gem 'rubyXL'
   gem 'roo'
   gem 'spreadsheet'
 
