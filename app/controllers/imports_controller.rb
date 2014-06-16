@@ -7,7 +7,8 @@ class ImportsController < ApplicationController
   def create
     begin
     @import = Import.create(import_params)
-    @@spreadsheet = Roo::Excel.new("#{@import.spreadsheet.path}")
+    @spreadsheet = Roo::Spreadsheet.open("#{@import.spreadsheet.path}")
+    @@spreadsheet = Roo::Spreadsheet.open("#{@import.spreadsheet.path}")
     # @@spreadsheet = Roo::Excelx.new("#{@import.spreadsheet.path}") #BUGFIX
     rescue => e
       render :error
@@ -18,6 +19,13 @@ class ImportsController < ApplicationController
   end
 
   def upload
+    @@spreadsheet
+    puts @@spreadsheet
+    puts "*********************************"
+    puts @@spreadsheet.sheet(0).row(1)
+    puts "*********************************"
+    puts @@spreadsheet.parse(:header_search => ['UPC*SKU','ATS*\sATP\s*QTY$'])
+
 
   end
 

@@ -1,9 +1,8 @@
-<h1> Your file has been successfully imported.  Click the link to upload your data to our database <h1>
-<br>
-<br>
-<%= @import.inspect %>
-<br>
-<br>
-<%= link_to "Upload Data",
+<h1>Your file has been successfully imported.<br><br>  Click upload your data to our database.<h1><br>
+  <%= button_to "Upload Data",
   :controller => "imports",
   :action => "upload" %>
+<br>
+<br>
+<%= @spreadsheet.parse(:header_search => ['UPC*SKU','ATS*\sATP\s*QTY$']) %>
+<br>
