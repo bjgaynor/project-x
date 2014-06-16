@@ -6,6 +6,12 @@ class ImportsController < ApplicationController
 
   def create
     @import = Import.create(import_params)
+    puts @import.spreadsheet.path
+    render :create
+  end
+
+  def upload
+
   end
 
 private

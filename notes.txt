@@ -23,3 +23,18 @@ EmployeeImporter.import(filename)
     <%= f.file_field :file %>
     <%= submit_tag 'Submit' %>
 <% end -%>
+
+/public/system/imports/spreadsheets/000/000/026/original/Service_invoice1.xls
+
+#   config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :s3_credentials => {
+  #     :bucket => ENV['S3_BUCKET_NAME'],
+  #     :access_key_id => ENV['AWS+ACCESS_KEY_ID'],
+  #     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  #   },
+  #   :s3_permissions => :authenticated_read,
+  #   :s3_protocol => "https",
+  #   :path => ':attachment/:id/:style/:filename',
+  #   :url => ':attachment/:id/:style/:filename'
+  # }

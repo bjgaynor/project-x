@@ -1,2 +1,10 @@
+<%= "Your file has been successfully imported.  Click the link to upload your data." %>
+<br>
+<br>
 <%= @import.inspect %>
 <%= @import.spreadsheet.path %>
+<br>
+<br>
+<%= link_to "Upload Data",
+  :controller => "imports",
+  :action => "upload" %>

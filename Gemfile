@@ -18,7 +18,9 @@ ruby '2.0.0'
   gem 'rubillow'
   gem 'mechanize'
   gem 'paperclip'
-  # gem 'spreadsheet'
+  # gem 'rubyXL'
+  gem 'roo'
+  gem 'spreadsheet'
 
 group :development, :test do
   gem 'rspec-rails'
