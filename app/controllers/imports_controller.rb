@@ -17,14 +17,24 @@ class ImportsController < ApplicationController
   end
 
   def upload
+    begin
     @spreadsheet = Roo::Spreadsheet.open("#{Import.last.spreadsheet.path}")
-    puts @spreadsheet.sheet(0).row(3) #array of the third row
-    puts @spreadsheet.sheet(0).column(3) #array of the third column
-    # potentially make a class method of listing or import to iterate through each row of two columns and create listings
-    # potentially create a failsafe using the first row, as in *if first row != [address, city_state_zip] no go*
-    # puts "*********************************"
-    # puts @@spreadsheet.parse(:header_search => ['UPC*SKU','ATS*\sATP\s*QTY$'])
+      @spreadsheet.each do |row|
+        listing = Listing.create(address: row[0], city_state_zip: row[1])
+        if listing.address == "address"
+          listing.destroy
+        else
+          @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => listing.address, :citystatezip => listing.city_state_zip, :rentzestimate => true })
+          @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
+          listing.update_attributes(zpid: @search_data.zpid, zestimate: @zestimate_data.price, rent_zestimate:@search_data.rent_zestimate, homedetail_links: @search_data.links)
+        end
+      end
+    rescue => e
+    render :error2
+    return
+    else
     render :upload
+    end
   end
 
 private

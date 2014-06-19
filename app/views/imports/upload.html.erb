@@ -2,4 +2,6 @@
   <br>
   <br>
 
-  <%= @spreadsheet.parse(:header_search => ['UPC*SKU','ATS*\sATP\s*QTY$']) %>
+  <%= Listing.all.each do |listing|
+  listing.inspect
+  end %>
