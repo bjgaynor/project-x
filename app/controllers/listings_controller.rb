@@ -22,10 +22,7 @@ class ListingsController < ApplicationController
       password_field = form.field_with(:id => 'password')
       password_field.value = 'b050295g'
       next_page = mechanize.submit(form)
-      # puts next_page.search('.zest-value').inner_text
-      puts next_page.search('.zest-value').inner_text
       @listing.update_attributes(forecast_percentage: next_page.search('.zest-forecast-change-percent').inner_text)
-      puts @listing.inspect
     end
   end
 
