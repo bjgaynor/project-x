@@ -20,24 +20,25 @@ ruby '2.0.0'
   gem 'paperclip'
   gem 'roo'
   gem 'spreadsheet'
+  gem 'table_cloth'
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'faker'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'factory_girl_rails', "~> 4.0"
-  gem 'pry'
-  gem 'shoulda-matchers'
-  gem 'dotenv-rails'
-  gem 'selenium-webdriver'
+  # gem 'rspec-rails'
+  # gem 'faker'
+  # gem 'capybara'
+  # gem 'database_cleaner'
+  # gem 'factory_girl_rails', "~> 4.0"
+  # gem 'pry'
+  # gem 'shoulda-matchers'
+  # gem 'dotenv-rails'
+  # gem 'selenium-webdriver'
 end
 
 
 
-group :doc do
-  gem 'sdoc', require: false
-end
+# group :doc do
+#   gem 'sdoc', require: false
+# end
 
 # gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'capistrano', group: :development
