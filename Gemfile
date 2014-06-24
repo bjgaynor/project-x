@@ -22,6 +22,7 @@ ruby '2.0.0'
   gem 'roo'
   gem 'spreadsheet'
   gem 'table_cloth'
+  gem 'dalli'
 
 group :development, :test do
   # gem 'rspec-rails'
