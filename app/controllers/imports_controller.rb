@@ -19,6 +19,7 @@ class ImportsController < ApplicationController
   #refactor the shit out of
   def upload
     # begin
+    Spawnling.new do
     @listings = []
     @spreadsheet = Roo::Spreadsheet.open("#{Import.last.spreadsheet.path}")
       @spreadsheet.each do |row|
@@ -26,7 +27,6 @@ class ImportsController < ApplicationController
         if @listing.address == "address"
           @listing.destroy
         else
-          render :text => "Your listings are being processed.  Please be patient.", :status => 200
           @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
           @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
           @listing.update_attributes(zpid: @search_data.zpid, zestimate: @zestimate_data.price, rent_zestimate: @search_data.rent_zestimate[:price], homedetail_links: @search_data.links)
@@ -48,6 +48,7 @@ class ImportsController < ApplicationController
           end
         end
       end
+    end
       # rescue => e
       # render :error2
       # return

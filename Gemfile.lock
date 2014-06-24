@@ -119,6 +119,7 @@ GEM
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    spawnling (2.1.4)
     spreadsheet (0.9.7)
       ruby-ole (>= 1.0)
     sprockets (2.11.0)
@@ -169,6 +170,7 @@ DEPENDENCIES
   rubillow
   sass-rails (~> 4.0.0)
   simple_form
+  spawnling
   spreadsheet
   table_cloth
   thin

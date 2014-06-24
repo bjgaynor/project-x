@@ -4,4 +4,4 @@
 
 http://rubydoc.info/gems/rubillow/0.0.8/frames
 
-[#<Nokogiri::XML::Element:0x3fd7f5837ce8 name="div" attributes=[#<Nokogiri::XML::Attr:0x3fd7f583bf28 name="class" value="zest-forecast-change">] children=[#<Nokogiri::XML::Text:0x3fd7f587f00c "\n                                ">, #<Nokogiri::XML::Element:0x3fd7f5c2b7c8 name="div" attributes=[#<Nokogiri::XML::Attr:0x3fd7f588b08c name="class" value="zest-forecast-change-percent">] children=[#<Nokogiri::XML::Text:0x3fd7f58aaaf4 "0">]>, #<Nokogiri::XML::Text:0x3fd7f5c60f68 "\n                                ">, #<Nokogiri::XML::Element:0x3fd7f58cba60 name="div" attributes=[#<Nokogiri::XML::Attr:0x3fd7f5c6dee8 name="class" value="zest-forecast-change-caption">] children=[#<Nokogiri::XML::Text:0x3fd7f58e5f64 "One year">]>, #<Nokogiri::XML::Text:0x3fd7f5cade08 "\n                            ">]>]
+at=info method=POST path="/upload" host=tranquil-sea-9266.herokuapp.com request_id=867c980b-84d2-4e3d-83f5-c41b2c96bf78 fwd="67.169.90.213" dyno=web.1 connect=2ms service=3220ms status=500 bytes=1497
