@@ -20,11 +20,8 @@ class ImportsController < ApplicationController
   def upload
     # begin
     @listings = []
-    spawns = []
     @spreadsheet = Roo::Spreadsheet.open("#{Import.last.spreadsheet.path}")
       @spreadsheet.each do |row|
-        Spawnling.new do
-        end
         @listing = Listing.create(address: row[0], city_state_zip: row[1])
         if @listing.address == "address"
           @listing.destroy
@@ -46,18 +43,11 @@ class ImportsController < ApplicationController
           next_page = mechanize.submit(form)
           @listing.update_attributes(forecast_percentage: next_page.search('.zest-forecast-change-percent').inner_text)
           @listings << @listing
-              # end
+              end
             end
           end
         end
-      end
-      puts @listings.inspect
-      # rescue => e
-      # render :error2
-      # return
-      # else
       render :upload
-      # end
     end
 
 private
