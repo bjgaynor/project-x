@@ -13,8 +13,8 @@ ruby '2.0.0'
 
 #Me
   gem 'pg'
-  # gem 'thin'
-  gem 'unicorn'
+  gem 'thin'
+  # gem 'unicorn'
   gem 'simple_form'
   gem 'rubillow'
   gem 'mechanize'
