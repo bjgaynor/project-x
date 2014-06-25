@@ -50,5 +50,5 @@ test:
 production:
   adapter: postgresql
   database: projectx_production
-  pool: 5
+  pool: 20
   reconnect: true
