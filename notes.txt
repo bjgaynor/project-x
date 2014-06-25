@@ -7,4 +7,5 @@ http://rubydoc.info/gems/rubillow/0.0.8/frames
 at=info method=POST path="/upload" host=tranquil-sea-9266.herokuapp.com request_id=867c980b-84d2-4e3d-83f5-c41b2c96bf78 fwd="67.169.90.213" dyno=web.1 connect=2ms service=3220ms status=500 bytes=1497
 
 web: bundle exec unicorn -c ./config/unicorn.rb -E development
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
 worker: bundle exec sidekiq -c 5 -v
