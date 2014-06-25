@@ -22,6 +22,7 @@ class ImportsController < ApplicationController
     @listings = []
     @spreadsheet = Roo::Spreadsheet.open("#{Import.last.spreadsheet.path}")
       @spreadsheet.each do |row|
+        HardWorker.perform_async('bob', 5)
         @listing = Listing.create(address: row[0], city_state_zip: row[1])
         if @listing.address == "address"
           @listing.destroy
