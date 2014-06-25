@@ -9,3 +9,4 @@ at=info method=POST path="/upload" host=tranquil-sea-9266.herokuapp.com request_
 web: bundle exec unicorn -c ./config/unicorn.rb -E development
 web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
 worker: bundle exec sidekiq -c 5 -v
+

@@ -1,8 +1,11 @@
-<h3>Successful Extraction of Data.<h3>
+<h3>Successful Extraction of <%=@listings.count%> listings to the database.<h3>
+
   <br>
   <br>
 
-  <%= simple_table_for @listings do |t| %>
+
+
+<%= simple_table_for @listings do |t| %>
   <% t.column :address %>
   <% t.column :city_state_zip %>
   <% t.column :zestimate %>
