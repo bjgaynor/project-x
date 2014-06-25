@@ -1,1 +1,1 @@
-web: bundle exec unicorn -c ./config/initializers/unicorn.rb -E production
+web: bundle exec unicorn -c ./config/initializers/unicorn.rb -E
