@@ -4,7 +4,7 @@ class HardWorker
   def perform(listing_id, link)
 
       listing = Listing.find(listing_id)
-
+      puts "**********************************"
       mechanize = Mechanize.new do |agent|
         agent.follow_meta_refresh = true
         agent.redirect_ok = true
