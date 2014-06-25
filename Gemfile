@@ -13,8 +13,8 @@ ruby '2.0.0'
 
 #Me
   gem 'pg'
-  gem 'thin'
-  gem 'spawnling'
+  # gem 'thin'
+  gem 'unicorn'
   gem 'simple_form'
   gem 'rubillow'
   gem 'mechanize'
@@ -23,6 +23,9 @@ ruby '2.0.0'
   gem 'spreadsheet'
   gem 'table_cloth'
   gem 'dalli'
+
+  #needed?
+  gem 'sidekiq'
 
 group :development, :test do
   # gem 'rspec-rails'
