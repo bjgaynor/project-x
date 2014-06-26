@@ -13,7 +13,6 @@ ruby '2.0.0'
 
 #Me
   gem 'pg'
-  # gem 'thin'
   gem 'unicorn'
   gem 'unicorn-rails'
   gem 'simple_form'
@@ -25,8 +24,7 @@ ruby '2.0.0'
   gem 'table_cloth'
   gem 'dalli'
 
-  #needed?
-  gem 'sidekiq'
+  gem 'sucker_punch'
 
 group :development, :test do
   # gem 'rspec-rails'

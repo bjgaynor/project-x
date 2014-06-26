@@ -9,12 +9,12 @@ class ListingsController < ApplicationController
     @listing = Listing.create(listing_params)
     @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
     @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
-    @listing.update_attributes(zpid: @search_data.zpid, zestimate: @zestimate_data.price, rent_zestimate: @search_data.rent_zestimate, homedetail_links: @search_data.links)
+    @listing.update_attributes(zpid: @search_data.zpid, zestimate: @zestimate_data.price, rent_zestimate: @search_data.rent_zestimate[:price], homedetail_links: @search_data.links.first[1])
     mechanize = Mechanize.new do |agent|
       agent.follow_meta_refresh = true
       agent.redirect_ok = true
     end
-    page = mechanize.get("#{@listing.homedetail_links.first[1]}") do |home_page|
+    page = mechanize.get("#{@listing.homedetail_links}") do |home_page|
     login_page = mechanize.click(home_page.link_with(:text => 'Sign In'))
     my_page = login_page.form_with(:id => 'loginForm') do |form|
       email_field = form.field_with(:id => 'email')
