@@ -26,3 +26,6 @@ worker: bundle exec sidekiq -c 5 -v
         #   end
         # end
 
+        # in database have listings belong to imports
+        # link to all imports, link to all associated listings
+

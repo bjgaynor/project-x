@@ -5,20 +5,18 @@ class ImportsController < ApplicationController
   end
 
   def create
-    begin
     @import = Import.create(import_params)
-    # @@spreadsheet = Roo::Excelx.new("#{@import.spreadsheet.path}") #BUGFIX
-    rescue => e
+    if @import.id == nil
+      @import.destroy
       render :error
-      return
     else
-    render :create
+      render :create
     end
   end
 
   #refactor the shit out of
   def upload
-    # begin
+    begin
     @listings = []
     @spreadsheet = Roo::Spreadsheet.open("#{Import.last.spreadsheet.path}")
       @spreadsheet.each do |row|
@@ -38,7 +36,11 @@ class ImportsController < ApplicationController
           @listings << @listing
           end
         end
-      render :upload
+      rescue => e
+      render :error2
+    else
+    render :upload
+    end
     end
 
 private

@@ -2,6 +2,8 @@ class ListingTable < TableCloth::Base
   # Define columns with the #column method
   # column :name, :email
 
+
+
   # Columns can be provided a block
   #
   # column :name do |object|
@@ -24,10 +26,11 @@ class ListingTable < TableCloth::Base
   # You can add as many actions as you want.
   # Make sure you include the actions extension.
   #
-  # actions do
+  actions do
+    action {|object| link_to 'Delete', object, method: :delete }
   #   action {|object| link_to "Edit", edit_object_path(object) }
   #   action(if: :valid?) {|object| link_to "Invalidate", invalidate_object_path(object) }
-  # end
+  end
   #
   # If action provides an "if:" option, it will call that method on the object. It can also take a block with an arity of 1.
 end

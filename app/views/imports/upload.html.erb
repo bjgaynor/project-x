@@ -1,12 +1,15 @@
-<h3>Successful Extraction of <%=@listings.count%> listings to the database.<h3>
+<%= link_to "View Complete Listings table", :controller => "listings", :action => "show_all" %>
+
+  <br>
+  <br>
+
+<h3>Successful Extraction of <%=@listings.count%> listings to our database.<h3>
 
   <br>
   <br>
 
 <%= simple_table_for @listings do |t| %>
+  <% t.column :id %>
   <% t.column :address %>
   <% t.column :city_state_zip %>
-  <% t.column :zestimate %>
-  <% t.column :rent_zestimate %>
-  <% t.column :forecast_percentage %>
 <% end %>
