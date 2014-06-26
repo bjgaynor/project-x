@@ -4,4 +4,5 @@ Projectx::Application.routes.draw do
   resources :imports, only: [:index, :create, :show, :destroy]
   post '/upload', to: 'imports#upload'
   get '/show/all', to: 'listings#show_all'
+  get '/destroy/all', to: 'listings#destroy_all'
 end

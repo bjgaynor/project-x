@@ -29,3 +29,11 @@ worker: bundle exec sidekiq -c 5 -v
         # in database have listings belong to imports
         # link to all imports, link to all associated listings
 
+        <%= simple_table_for @listings do |t| %>
+  <% t.column :id %>
+  <% t.column :address %>
+  <% t.column :city_state_zip %>
+<% end %>
+
+#TODO refactor homedetail links and rentzestimate to not be hashes for faster calls
+

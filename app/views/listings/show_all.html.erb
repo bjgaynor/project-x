@@ -1,3 +1,8 @@
+<%= link_to "Delete All Listings", :controller => "listings", :action => "destroy_all", :method => 'delete', :class => "delete_button" %>
+
+  <br>
+  <br>
+
 <%= simple_table_for @listings do |t| %>
   <% t.column :id %>
   <% t.column :address %>

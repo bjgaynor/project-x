@@ -14,34 +14,22 @@ class ImportsController < ApplicationController
     end
   end
 
-  #refactor the shit out of
   def upload
-    begin
     @listings = []
     @spreadsheet = Roo::Spreadsheet.open("#{Import.last.spreadsheet.path}")
-      @spreadsheet.each do |row|
-        @listing = Listing.create(address: row[0], city_state_zip: row[1])
-        if @listing.address == "address"
-          @listing.destroy
-        else
-
-          @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
-          @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
-          @listing.update_attributes(zpid: @search_data.zpid, zestimate: @zestimate_data.price, rent_zestimate: @search_data.rent_zestimate[:price], homedetail_links: @search_data.links)
-
-          ForecastScrapeJob.new.async.perform(@listing.id)
-
-            #MECHANIZE CODE IN NOTES.TXT GOES HERE#
-
-          @listings << @listing
-          end
-        end
-      rescue => e
-      render :error2
-    else
     render :upload
+    @spreadsheet.each do |row|
+      @listing = Listing.create(address: row[0], city_state_zip: row[1], import_id: Import.last.id)
+      if @listing.address == "address"
+        @listing.destroy
+      else
+        @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
+        @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
+        ZillowApiJob.new.async.perform(@listing.id, @search_data, @zestimate_data)
+        ForecastScrapeJob.new.async.perform(@listing.id, @search_data)
+      end
     end
-    end
+  end
 
 private
 

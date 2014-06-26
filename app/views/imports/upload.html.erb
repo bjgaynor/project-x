@@ -1,15 +1,10 @@
-<%= link_to "View Complete Listings table", :controller => "listings", :action => "show_all" %>
+<%= link_to "View Complete Listings Table", :controller => "listings", :action => "show_all" %>
 
   <br>
   <br>
 
-<h3>Successful Extraction of <%=@listings.count%> listings to our database.<h3>
+<h3>Successful Extraction of listings to our database.<h3>
 
   <br>
-  <br>
 
-<%= simple_table_for @listings do |t| %>
-  <% t.column :id %>
-  <% t.column :address %>
-  <% t.column :city_state_zip %>
-<% end %>
+<h3>For best results, wait several seconds and then view the Complete Listings Table.  Most recent will be right on top.<h3>
