@@ -23,7 +23,6 @@ ruby '2.0.0'
   gem 'spreadsheet'
   gem 'table_cloth'
   gem 'dalli'
-
   gem 'sucker_punch'
 
 group :development, :test do
