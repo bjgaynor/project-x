@@ -37,11 +37,19 @@ class ListingsController < ApplicationController
   end
 
   def show_all
-    @listings = Listing.all.sort_by! {|listing| listing.id}
+    @listings = Listing.recent
+  end
+
+  def destroy_all
+    @listings = Listing.recent
+    @listings.each do |listing|
+      listing.destroy
+    end
+    redirect_to :action => "show_all"
   end
 
   def destroy
-    @listings = Listing.all.sort_by! {|listing| listing.id}
+    @listings = Listing.recent
     listing = Listing.find(params[:id])
     listing.destroy
     render :show_all
