@@ -19,7 +19,7 @@ class ImportsController < ApplicationController
     @spreadsheet = Roo::Spreadsheet.open("#{Import.last.spreadsheet.path}")
     render :upload
     @spreadsheet.each do |row|
-      @listing = Listing.create(address: row[0], city_state_zip: row[1], import_id: Import.last.id)
+      @listing = Listing.create(address: row[0], city_state_zip: row[1]) #, import_id: Import.last.id)
       if @listing.address == "address"
         @listing.destroy
       else
