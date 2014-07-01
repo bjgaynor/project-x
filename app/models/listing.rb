@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
-  scope :recent, ->{order(created_at: :desc)}
+  scope :recent, ->{order(created_at: :asc)}
 
   # validates_uniqueness_of :zpid
 
