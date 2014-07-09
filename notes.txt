@@ -35,12 +35,6 @@ worker: bundle exec sidekiq -c 5 -v
   <% t.column :city_state_zip %>
 <% end %>
 
-#TODO refactor homedetail links and rentzestimate to not be hashes for faster calls
-
-^^ Done in the_past
-
-#TODO factor the_past into master using everything from the_past besides the early render in imports#upload and the new job from imports#upload
-
 <% t.actions do %>
     <% action {|listing| link_to 'Delete', listing, method: :delete } %>
 <% end %>

@@ -23,10 +23,15 @@ class ImportsController < ApplicationController
       if @listing.address == "address"
         @listing.destroy
       else
+        mechanize = Mechanize.new do |agent|
+        agent.follow_meta_refresh = true
+        agent.redirect_ok = true
+        end
+
         @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
         @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
         ZillowApiJob.new.async.perform(@listing.id, @search_data, @zestimate_data)
-        ForecastScrapeJob.new.async.perform(@listing.id, @search_data)
+        ForecastScrapeJob.new.async.perform(@listing.id, @search_data, mechanize)
       end
     end
   end
