@@ -1,6 +1,6 @@
 class ZillowApiJob
   include SuckerPunch::Job
-  workers 4
+  workers 2
 
   def perform(listing_id, search_data, zestimate_data)
     ActiveRecord::Base.connection_pool.with_connection do
