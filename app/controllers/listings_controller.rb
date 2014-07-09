@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
 
   def create
     # begin
+      @listings = []
       @listing = Listing.create(listing_params)
       @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
       @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
@@ -25,6 +26,7 @@ class ListingsController < ApplicationController
           password_field.value = 'b050295g'
           next_page = mechanize.submit(form)
           @listing.update_attributes(forecast_percentage: next_page.search('.zest-forecast-change-percent').inner_text)
+          @listings << @listing
         end
       end
 
