@@ -1,12 +1,17 @@
 class ForecastScrapeJob
   include SuckerPunch::Job
-  workers 2
+  workers 4
 
-  def perform(listing_id, search_data, mechanize)
+  def perform(listing_id)
     ActiveRecord::Base.connection_pool.with_connection do
       listing = Listing.find(listing_id)
 
-      page = mechanize.get("#{search_data.links.first[1]}") do |home_page|
+      mechanize = Mechanize.new do |agent|
+        agent.follow_meta_refresh = true
+        agent.redirect_ok = true
+      end
+
+      page = mechanize.get("#{listing.homepage}") do |home_page|
         login_page = mechanize.click(home_page.link_with(:text => 'Sign In'))
         my_page = login_page.form_with(:id => 'loginForm') do |form|
           email_field = form.field_with(:id => 'email')
