@@ -1,6 +1,6 @@
 class ForecastScrapeJob
   include SuckerPunch::Job
-  workers 4
+  workers 2
 
   def perform(listing_id)
     ActiveRecord::Base.connection_pool.with_connection do

@@ -25,7 +25,7 @@ class ImportsController < ApplicationController
       else
         @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
         @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
-        # TODO put above two lines in zillow_api_job
+        #TODO put above two lines in zillow_api_job
         @listing.update_attributes(homepage: @search_data.links.first[1])
         ZillowApiJob.new.async.perform(@listing.id, @search_data, @zestimate_data)
         ForecastScrapeJob.new.async.perform(@listing.id)
