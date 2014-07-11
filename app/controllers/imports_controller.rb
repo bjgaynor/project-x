@@ -21,18 +21,17 @@ class ImportsController < ApplicationController
     render :upload
     @spreadsheet.each do |row|
 
+      mechanize = Mechanize.new do |agent|
+        agent.follow_meta_refresh = true
+        agent.redirect_ok = true
+      end
+
       @listing = Listing.create(address: row[0], city_state_zip: row[1])
       @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
       if @search_data.message[0...5] == "Error"
         @listing.destroy
       else
         @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
-
-        mechanize = Mechanize.new do |agent|
-        agent.follow_meta_refresh = true
-        agent.redirect_ok = true
-        end
-
         ZillowApiJob.new.async.perform(@listing.id, @search_data, @zestimate_data)
         ForecastScrapeJob.new.async.perform(@listing.id, @search_data, mechanize)
       end
