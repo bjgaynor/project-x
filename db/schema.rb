@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629113020) do
+ActiveRecord::Schema.define(version: 20140711053108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,14 +34,10 @@ ActiveRecord::Schema.define(version: 20140629113020) do
     t.string   "zpid"
     t.string   "city_state_zip"
     t.string   "rent_zestimate"
-    t.string   "homepage"
-    t.integer  "import_id"
   end
 
   add_index "listings", ["address"], name: "index_listings_on_address", using: :btree
   add_index "listings", ["city_state_zip"], name: "index_listings_on_city_state_zip", using: :btree
-  add_index "listings", ["homepage"], name: "index_listings_on_homepage", using: :btree
-  add_index "listings", ["import_id"], name: "index_listings_on_import_id", using: :btree
   add_index "listings", ["zpid"], name: "index_listings_on_zpid", using: :btree
 
 end

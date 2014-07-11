@@ -14,22 +14,23 @@ class ImportsController < ApplicationController
     end
   end
 
+  #timeout issue
   def upload
     @listings = []
     @spreadsheet = Roo::Spreadsheet.open("#{Import.last.spreadsheet.path}")
     render :upload
     @spreadsheet.each do |row|
-      @listing = Listing.create(address: row[0], city_state_zip: row[1]) #, import_id: Import.last.id)
-      if @listing.address == "address"
+
+      mechanize = Mechanize.new do |agent|
+        agent.follow_meta_refresh = true
+        agent.redirect_ok = true
+      end
+
+      @listing = Listing.create(address: row[0], city_state_zip: row[1])
+      @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
+      if @search_data.message[0...5] == "Error"
         @listing.destroy
       else
-        mechanize = Mechanize.new do |agent|
-         agent.follow_meta_refresh = true
-         agent.redirect_ok = true
-        end
-        #Move mechanize all the way up?
-
-        @search_data = Rubillow::PropertyDetails.deep_search_results({ :address => @listing.address, :citystatezip => @listing.city_state_zip, :rentzestimate => true })
         @zestimate_data = Rubillow::HomeValuation.zestimate({ :zpid => @search_data.zpid })
         ZillowApiJob.new.async.perform(@listing.id, @search_data, @zestimate_data)
         ForecastScrapeJob.new.async.perform(@listing.id, @search_data, mechanize)
