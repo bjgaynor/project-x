@@ -1,4 +1,5 @@
 class ImportsController < ApplicationController
+  caches_page :upload
 
   def index
     @import = Import.new
@@ -14,7 +15,6 @@ class ImportsController < ApplicationController
     end
   end
 
-  #timeout issue
   def upload
     @listings = []
     @spreadsheet = Roo::Spreadsheet.open("#{Import.last.spreadsheet.path}")

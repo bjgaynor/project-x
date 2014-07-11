@@ -24,6 +24,7 @@ ruby '2.0.0'
   gem 'table_cloth'
   gem 'dalli'
   gem 'sucker_punch'
+  gem 'actionpack-page_caching'
 
 group :development, :test do
   # gem 'rspec-rails'

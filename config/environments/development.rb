@@ -8,6 +8,8 @@ Projectx::Application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
+  config.threadsafe = true
+  config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
