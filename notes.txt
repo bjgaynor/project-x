@@ -47,6 +47,14 @@ worker: bundle exec sidekiq -c 5 -v
 
 # Clean 60
 29629ms
+29785ms
+27893ms
+29629ms
+30002ms
+27391ms
+29629ms
+30002ms
+27391ms
 30002ms
 27391ms
 
